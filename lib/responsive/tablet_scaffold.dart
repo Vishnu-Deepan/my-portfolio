@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import '../constant.dart';
-import '../utils/experience_box.dart';
-import '../utils/projects_box.dart';
+import '../screens/tablet/contact_page_tab.dart';
+import '../screens/tablet/dashboard_page_tab.dart';
+import '../screens/tablet/education_page_tab.dart';
+import '../screens/tablet/experience_page_tab.dart';
+import '../screens/tablet/projects_page_tab.dart';
 
 class TabletScaffold extends StatefulWidget {
   const TabletScaffold({super.key});
@@ -19,49 +21,24 @@ class _TabletScaffoldState extends State<TabletScaffold> {
       backgroundColor: myBackgroundColor,
       appBar: myAppBar,
       drawer: myDrawer,
-      body: SingleChildScrollView(
-        child:  Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            //title
-            Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                child: Text(
-                  "P R O J E C T S",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ),
-            ),
-
-            // porject grid
-            AspectRatio(
-              aspectRatio: 1,
-              child: SizedBox(
-                width: double.infinity,
-                child: GridView.builder(
-                    itemCount: 7,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4),
-                    itemBuilder: (context, index) {
-                      return ProjectBox();
-                    }),
-              ),
-            ),
-            // Flexible(
-            //   fit: FlexFit.loose,
-            //   child: ListView.builder(
-            //     itemCount: 5,
-            //     itemBuilder: (context, index) {
-            //       return ExperienceBox();
-            //     },
-            //   ),
-            // ),
-          ],
-        ),
+      body: AnimatedBuilder(
+        animation: controller,
+        builder: (context, _) {
+          switch (controller.selectedIndex) {
+            case 0:
+              return DashboardPageTablet();
+            case 1:
+              return ExperiencePageTablet();
+            case 2:
+              return EducationPageTablet();
+            case 3:
+              return ProjectsPageTablet();
+            case 4:
+              return ContactPageTablet();
+            default:
+              return DashboardPageTablet();
+          }
+        },
       ),
 
     );
