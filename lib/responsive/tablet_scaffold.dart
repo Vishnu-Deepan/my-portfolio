@@ -19,7 +19,12 @@ class _TabletScaffoldState extends State<TabletScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: myBackgroundColor,
-      appBar: myAppBar,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Color(0x1000000),
+        elevation: 0,
+        // title: Text("Dashboard",style: TextStyle(color: Colors.white),),
+      ),
       drawer: myDrawer,
       body: AnimatedBuilder(
         animation: controller,

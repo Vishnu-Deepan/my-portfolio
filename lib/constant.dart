@@ -16,9 +16,6 @@ final divider = Divider(color: white.withOpacity(0.3), height: 1);
 
 var myBackgroundColor = Color(0xFF1b1b1b);
 
-var myAppBar = AppBar(
-  backgroundColor: scaffoldBackgroundColor,
-);
 
 final SidebarXController controller = SidebarXController(selectedIndex: 0, extended: true);
 

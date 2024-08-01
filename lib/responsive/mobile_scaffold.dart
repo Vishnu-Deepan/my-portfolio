@@ -21,28 +21,42 @@ class _MobileScaffoldState extends State<MobileScaffold> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: myBackgroundColor,
-      appBar: myAppBar,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Color(0x1000000),
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       drawer: myDrawer,
-      body: AnimatedBuilder(
-        animation: controller,
-        builder: (context, _) {
-          switch (controller.selectedIndex) {
-            case 0:
-              return DashboardPageMobile();
-            case 1:
-              return ExperiencePageMobile();
-            case 2:
-              return EducationPageMobile();
-            case 3:
-              return ProjectsPageMobile();
-            case 4:
-              return ContactPageMobile();
-            default:
-              return DashboardPageMobile();
-          }
-        },
+      body: Stack(
+        children: [
+          Image.asset(
+            "assets/bg.jpg",
+            height: MediaQuery.of(context).size.height,
+            fit: BoxFit.fill,
+
+          ),
+          AnimatedBuilder(
+            animation: controller,
+            builder: (context, _) {
+              switch (controller.selectedIndex) {
+                case 0:
+                  return DashboardPageMobile();
+                case 1:
+                  return ExperiencePageMobile();
+                case 2:
+                  return EducationPageMobile();
+                case 3:
+                  return ProjectsPageMobile();
+                case 4:
+                  return ContactPageMobile();
+                default:
+                  return DashboardPageMobile();
+              }
+            },
+          ),
+        ],
       ),
     );
   }
-
 }

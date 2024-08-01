@@ -50,6 +50,8 @@ class _DashboardPageDesktopState extends State<DashboardPageDesktop> {
                 padding:
                     EdgeInsets.only(left: 100, right: 70, bottom: 80, top: 25),
                 child: Text(
+                  textAlign: TextAlign.center,
+
                   "Enthusiastic B.Tech IT graduate seeking a challenging entry-level position. Possessing a strong foundation in computer science and a keen interest in exploring the dynamic world of technology. Eager to contribute innovative ideas and solutions to a thriving organization. Expected graduation in May 2025.",
                   style: GoogleFonts.poppins(fontSize: 16),
                 ),
