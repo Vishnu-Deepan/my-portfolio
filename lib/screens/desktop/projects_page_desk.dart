@@ -10,13 +10,21 @@ class ProjectsPageDesktop extends StatefulWidget {
 class _ProjectsPageDesktopState extends State<ProjectsPageDesktop> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-          child: Stack(
-            children: [
 
-              Text("data"),
-            ],
-          ),
+    return Expanded(
+      child: Column(
+        children: [
+          Text("data"),
+
+          //project card
+
+        ],
+      ),
     );
   }
+
 }
+
+
+
+
