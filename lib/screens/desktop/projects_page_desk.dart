@@ -10,14 +10,13 @@ class ProjectsPageDesktop extends StatefulWidget {
 class _ProjectsPageDesktopState extends State<ProjectsPageDesktop> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        "Projects",
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.w900,
-        ),
-      ),
+    return Container(
+          child: Stack(
+            children: [
+
+              Text("data"),
+            ],
+          ),
     );
   }
 }

@@ -15,6 +15,7 @@ class _ExperiencePageMobileState extends State<ExperiencePageMobile> {
         "Experience",
         style: TextStyle(
           fontSize: 30,
+          color: Colors.white,
           fontWeight: FontWeight.w900,
         ),
       ),

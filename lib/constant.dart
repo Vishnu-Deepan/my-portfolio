@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 // DRAWER Theme
+
+// 360a21 red shade
+// 061630 blue shade
+
 const primaryColor = Color(0xFF685BFF);
-const canvasColor = Color(0xFF2E2E48);
+const canvasColor = Color(0xFF1b1b1b);
 const scaffoldBackgroundColor = Color(0xFF464667);
 const accentCanvasColor = Color(0xFF3E3E61);
 const white = Colors.white;
@@ -75,7 +79,7 @@ var myDrawer = SidebarX(
       height: 200,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Image.asset('assets/profile.png'),
+        // child: Image.asset('assets/profile.png'),
       ),
     );
   },
