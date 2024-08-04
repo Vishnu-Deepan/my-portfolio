@@ -21,26 +21,10 @@ class Project {
 
 Map<String, Map<String, dynamic>> projects = {
   'project1': {
-    'image': 'assets/projects/alumni.jpg',
-    'avatarForegroundColor': Colors.lightBlue,
-    'avatarIcon': SimpleIcons.flutter,
-    'titleText': 'Alumni Connect App',
-    'content': 'This is the project description for Project 1.',
-    'images': <String>[],
-  },
-  'project2': {
     'image': 'assets/projects/bug.jpg',
     'avatarForegroundColor': Colors.lightBlueAccent,
     'avatarIcon': SimpleIcons.react,
     'titleText': 'Bug Tracking Tool(Project Management)',
-    'content': 'This is the project description for Project 2.',
-    'images': <String>[],
-  },
-  'project3': {
-    'image': 'assets/projects/hotel.jpg',
-    'avatarForegroundColor': Colors.lightBlue,
-    'avatarIcon': SimpleIcons.flutter,
-    'titleText': 'Hotel Booking App',
     'content': 'This is the project description for Project 3.',
     'images': <String>[
       "assets/bug/bug_tracking_tool pages (1)_pages-to-jpg-1.jpg",
@@ -52,6 +36,24 @@ Map<String, Map<String, dynamic>> projects = {
       "assets/bug/bug_tracking_tool pages (1)_pages-to-jpg-7.jpg",
       "assets/bug/bug_tracking_tool pages (1)_pages-to-jpg-8.jpg",
     ],
+  },
+
+
+  'project2': {
+    'image': 'assets/projects/bug.jpg',
+    'avatarForegroundColor': Colors.lightBlueAccent,
+    'avatarIcon': SimpleIcons.react,
+    'titleText': 'Bug Tracking Tool(Project Management)',
+    'content': 'This is the project description for Project 2.',
+    'images': <String>[],
+  },
+  'project3': {
+    'image': 'assets/projects/alumni.jpg',
+    'avatarForegroundColor': Colors.lightBlue,
+    'avatarIcon': SimpleIcons.flutter,
+    'titleText': 'Alumni Connect App',
+    'content': 'This is the project description for Project 1.',
+    'images': <String>[],
   },
   'project4': {
     'image': 'assets/projects/hotel.jpg',
