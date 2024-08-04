@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  fan_carousel_image_slider:
+    dependency: "direct main"
+    description:
+      name: fan_carousel_image_slider
+      sha256: af6fa57110a68d054a94784896f213b088f8debe94eea64eaf97b39ad5c8c21b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   ffi:
     dependency: transitive
     description:
@@ -104,6 +112,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  getwidget:
+    dependency: "direct main"
+    description:
+      name: getwidget
+      sha256: "91df14a8d80e21f3ec02759295b90cc8badb8a872b90d34ad4aeb4085d833b5c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -192,14 +208,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
-  overlapped_carousel:
-    dependency: "direct main"
-    description:
-      name: overlapped_carousel
-      sha256: a3bc6af9651e1732cffcdd2b4df4204f4fae5ef4b270a6a2dd9707fa8b1e1f3c
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
   path:
     dependency: transitive
     description:
