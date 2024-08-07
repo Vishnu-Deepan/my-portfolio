@@ -15,7 +15,7 @@ class _DashboardPageMobileState extends State<DashboardPageMobile> {
 
   void downloadResume() async {
     String fileUrl =
-        "https://drive.google.com/file/d/1T2S5_9zTfNX9Ns7rTLc6n9fFxFUfnj_h/view?usp=sharing";
+        "https://drive.google.com/file/d/11VK0_q53r1lKRtNcYu-t9d2ZnXpEo0v0/view?usp=drive_link";
     final url = Uri.parse(fileUrl);
     launchUrl(url);
     Future.delayed(const Duration(seconds: 5), () {
