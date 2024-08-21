@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/typography/gf_typography.dart';
-import 'package:getwidget/types/gf_typography_type.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../models/project.dart';
 import '../../utilities/project_card.dart';
 
@@ -29,181 +30,172 @@ class _ProjectsPageMobileState extends State<ProjectsPageMobile> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(38.0),
-        child: _showDetails && _selectedProject != null
-            ? _buildDetails(_selectedProject!)
-            : Column(
-                children: [
-                  ProjectCard(
-                    image: projects['project1']!['image'],
-                    avatarForegroundColor:
-                        projects['project1']!['avatarForegroundColor'],
-                    avatarIcon: projects['project1']!['avatarIcon'],
-                    titleText: projects['project1']!['titleText'],
-                    content: projects['project1']!['content'],
-                    images: List<String>.from(projects['project1']!['images']),
-                    onTap: () => _onProjectTap('project1'),
-                  ),
-                  ProjectCard(
-                    image: projects['project2']!['image'],
-                    avatarForegroundColor:
-                        projects['project2']!['avatarForegroundColor'],
-                    avatarIcon: projects['project2']!['avatarIcon'],
-                    titleText: projects['project2']!['titleText'],
-                    content: projects['project2']!['content'],
-                    images: List<String>.from(projects['project2']!['images']),
-                    onTap: () => _onProjectTap('project2'),
-                  ),
-                  ProjectCard(
-                    image: projects['project3']!['image'],
-                    avatarForegroundColor:
-                        projects['project3']!['avatarForegroundColor'],
-                    avatarIcon: projects['project3']!['avatarIcon'],
-                    titleText: projects['project3']!['titleText'],
-                    content: projects['project3']!['content'],
-                    images: List<String>.from(projects['project3']!['images']),
-                    onTap: () => _onProjectTap('project3'),
-                  ),
-                  ProjectCard(
-                    image: projects['project4']!['image'],
-                    avatarForegroundColor:
-                        projects['project4']!['avatarForegroundColor'],
-                    avatarIcon: projects['project4']!['avatarIcon'],
-                    titleText: projects['project4']!['titleText'],
-                    content: projects['project4']!['content'],
-                    images: List<String>.from(projects['project4']!['images']),
-                    onTap: () => _onProjectTap('project4'),
-                  ),
-                  ProjectCard(
-                    image: projects['project5']!['image'],
-                    avatarForegroundColor:
-                        projects['project5']!['avatarForegroundColor'],
-                    avatarIcon: projects['project5']!['avatarIcon'],
-                    titleText: projects['project5']!['titleText'],
-                    content: projects['project5']!['content'],
-                    images: List<String>.from(projects['project5']!['images']),
-                    onTap: () => _onProjectTap('project5'),
-                  ),
-                  ProjectCard(
-                    image: projects['project6']!['image'],
-                    avatarForegroundColor:
-                        projects['project6']!['avatarForegroundColor'],
-                    avatarIcon: projects['project6']!['avatarIcon'],
-                    titleText: projects['project6']!['titleText'],
-                    content: projects['project6']!['content'],
-                    images: List<String>.from(projects['project6']!['images']),
-                    onTap: () => _onProjectTap('project6'),
-                  ),
-                ],
-              ),
+  void _onImageTap(List<String> images, int initialIndex) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FullScreenImageViewer(
+          images: images,
+          initialIndex: initialIndex,
+        ),
       ),
     );
   }
 
-
-
-
-
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: _showDetails && _selectedProject != null
+            ? _buildDetails(_selectedProject!)
+            : Column(
+          children: [
+            SizedBox(
+              height: 40,
+            ),
+            Text(
+              "Projects",
+              style: GoogleFonts.abyssinicaSil(
+                fontSize: 29,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            Column(
+              children: projects.keys.map((projectName) {
+                return ProjectCard(
+                  image: projects[projectName]!['image'],
+                  avatarForegroundColor:
+                  projects[projectName]!['avatarForegroundColor'],
+                  avatarIcon: projects[projectName]!['avatarIcon'],
+                  titleText: projects[projectName]!['titleText'],
+                  content: projects[projectName]!['content'],
+                  images:
+                  List<String>.from(projects[projectName]!['images']),
+                  onTap: () => _onProjectTap(projectName),
+                );
+              }).toList(),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _buildDetails(Map<String, dynamic> project) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+        SizedBox(
+          height: 60,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: _onBack,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: _onBack,
+                  color: Colors.white,
+                ),
+                const SizedBox(width: 8),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  child: Text(
+                    project['titleText'],
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Text("All projects"),
+            const SizedBox(height: 16),
+            Image.asset(
+              project['image'],
+              width: double.infinity,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              project['titleText'],
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              project['content'],
+              style: const TextStyle(color: Colors.white70),
+            ),
+            const SizedBox(height: 18),
+            const Text(
+              "Project Screenshots",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 8,
+              children: project['images']
+                  .asMap()
+                  .entries
+                  .map<Widget>((entry) => GestureDetector(
+                onTap: () => _onImageTap(
+                    List<String>.from(project['images']), entry.key),
+                child: Image.asset(
+                  entry.value,
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
+              ))
+                  .toList(),
+            ),
           ],
         ),
-        SizedBox(
-          height: 10,
-        ),
-        Image.asset(
-          project['image'],
-          width: double.infinity,
-          height: 200,
-          fit: BoxFit.cover,
-        ),
-        SizedBox(height: 16),
-        Text(
-          project['titleText'],
-          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
-        ),
-        GFTypography(
-          dividerColor: Colors.white,
-          text: "",
-          type: GFTypographyType.typo6,
-        ),
-        SizedBox(height: 16),
-        Text(project['content']),
-        SizedBox(height: 18),
-        Text(
-          "Project Screenshots",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(height: 16),
-        Wrap(
-          spacing: 8,
-          children: project['images']
-              .map<Widget>((image) => Image.asset(
-            image,
-            height: 100,
-            width: 100,
-            fit: BoxFit.cover,
-          ))
-              .toList(),
-        ),
-
-        // ParallaxSwiper(
-        //   images: [
-        //     'image_url_1.jpg',
-        //     'image_url_2.jpg',
-        //     'image_url_3.jpg',
-        //   ],
-        //   dragToScroll: true,
-        //   viewPortFraction: 0.85,
-        //   padding: EdgeInsets.all(16.0),
-        //   parallaxFactor: 10.0,
-        //   foregroundFadeEnabled: true,
-        //   backgroundZoomEnabled: true,
-        // )
-
-        // if (project['images'].isNotEmpty)
-        //   CarouselSlider(
-        //     options: CarouselOptions(
-        //       // height: Media,
-        //       // aspectRatio: 16/9,
-        //       // viewportFraction: 0.8,
-        //       enlargeCenterPage: true,
-        //       autoPlay: true,
-        //     ),
-        //     items: project['images'].map<Widget>((image) {
-        //       return Builder(
-        //         builder: (BuildContext context) {
-        //           return Container(
-        //             width: MediaQuery.of(context).size.width,
-        //             margin: EdgeInsets.symmetric(horizontal: 5.0),
-        //             decoration: BoxDecoration(
-        //               color: Colors.black54,
-        //             ),
-        //             child: Image.asset(
-        //               image,
-        //               fit: BoxFit.cover,
-        //             ),
-        //           );
-        //         },
-        //       );
-        //     }).toList(),
-        //   ),
       ],
+    );
+  }
+}
+
+class FullScreenImageViewer extends StatelessWidget {
+  final List<String> images;
+  final int initialIndex;
+
+  const FullScreenImageViewer(
+      {Key? key, required this.images, required this.initialIndex})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: CarouselSlider.builder(
+        itemCount: images.length,
+        options: CarouselOptions(
+          initialPage: initialIndex,
+          enableInfiniteScroll: false,
+          viewportFraction: 1.0,
+          enlargeCenterPage: false,
+        ),
+        itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+            Container(
+              child: PhotoView(
+                imageProvider: AssetImage(images[itemIndex]),
+                backgroundDecoration: BoxDecoration(color: Colors.black),
+              ),
+            ),
+      ),
     );
   }
 }
