@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactPageMobile extends StatefulWidget {
@@ -38,6 +39,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
 
           // Phone
           InkWell(
+            hoverColor: Colors.grey,
             onTap: () {
               _launchURL('tel:+919994376845');
             },
@@ -45,7 +47,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
               width: double.infinity,
               height: 150,
               child: Card(
-                color: Colors.green[300],
+                color: Colors.transparent,
                 margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -54,7 +56,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
                   padding: const EdgeInsets.all(16),
                   child: Row(
                     children: [
-                      Icon(Icons.phone, color: Colors.white, size: 40),
+                      Icon(Icons.phone, color: Colors.green, size: 40),
                       const SizedBox(width: 20),
                       Text(
                         'Phone',
@@ -80,7 +82,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
               width: double.infinity,
               height: 150,
               child: Card(
-                color: Colors.red[300],
+                color: Colors.transparent,
                 margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -89,7 +91,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
                   padding: const EdgeInsets.all(16),
                   child: Row(
                     children: [
-                      Icon(Icons.email, color: Colors.white, size: 40),
+                      Icon(SimpleIcons.gmail, color: Colors.red, size: 40),
                       const SizedBox(width: 20),
                       Text(
                         'Email',
@@ -115,7 +117,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
               width: double.infinity,
               height: 150,
               child: Card(
-                color: Colors.blue[300],
+                color: Colors.transparent,
                 margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -124,7 +126,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
                   padding: const EdgeInsets.all(16),
                   child: Row(
                     children: [
-                      Icon(Icons.business, color: Colors.white, size: 40),
+                      Icon(SimpleIcons.linkedin, color: Colors.blueAccent, size: 40),
                       const SizedBox(width: 20),
                       Text(
                         'LinkedIn',
@@ -150,7 +152,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
               width: double.infinity,
               height: 150,
               child: Card(
-                color: const Color(0xff2b3137),
+                color: Colors.transparent,
                 margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -159,7 +161,7 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
                   padding: const EdgeInsets.all(16),
                   child: Row(
                     children: [
-                      Icon(Icons.code, color: Colors.white, size: 40),
+                      Icon(SimpleIcons.github, color: Colors.white, size: 40),
                       const SizedBox(width: 20),
                       Text(
                         'Github',
@@ -179,4 +181,6 @@ class _ContactPageMobileState extends State<ContactPageMobile> {
       ),
     );
   }
+
+
 }

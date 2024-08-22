@@ -50,34 +50,34 @@ class _ProjectsPageMobileState extends State<ProjectsPageMobile> {
         child: _showDetails && _selectedProject != null
             ? _buildDetails(_selectedProject!)
             : Column(
-          children: [
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-              "Projects",
-              style: GoogleFonts.abyssinicaSil(
-                fontSize: 29,
-                fontWeight: FontWeight.w800,
+                children: [
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    "Projects",
+                    style: GoogleFonts.abyssinicaSil(
+                      fontSize: 29,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Column(
+                    children: projects.keys.map((projectName) {
+                      return ProjectCard(
+                        image: projects[projectName]!['image'],
+                        avatarForegroundColor:
+                            projects[projectName]!['avatarForegroundColor'],
+                        avatarIcon: projects[projectName]!['avatarIcon'],
+                        titleText: projects[projectName]!['titleText'],
+                        content: projects[projectName]!['content'],
+                        images:
+                            List<String>.from(projects[projectName]!['images']),
+                        onTap: () => _onProjectTap(projectName),
+                      );
+                    }).toList(),
+                  )
+                ],
               ),
-            ),
-            Column(
-              children: projects.keys.map((projectName) {
-                return ProjectCard(
-                  image: projects[projectName]!['image'],
-                  avatarForegroundColor:
-                  projects[projectName]!['avatarForegroundColor'],
-                  avatarIcon: projects[projectName]!['avatarIcon'],
-                  titleText: projects[projectName]!['titleText'],
-                  content: projects[projectName]!['content'],
-                  images:
-                  List<String>.from(projects[projectName]!['images']),
-                  onTap: () => _onProjectTap(projectName),
-                );
-              }).toList(),
-            )
-          ],
-        ),
       ),
     );
   }
@@ -85,7 +85,7 @@ class _ProjectsPageMobileState extends State<ProjectsPageMobile> {
   Widget _buildDetails(Map<String, dynamic> project) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 60,
         ),
         Column(
@@ -104,7 +104,7 @@ class _ProjectsPageMobileState extends State<ProjectsPageMobile> {
                   width: MediaQuery.of(context).size.width / 1.5,
                   child: Text(
                     project['titleText'],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -150,15 +150,15 @@ class _ProjectsPageMobileState extends State<ProjectsPageMobile> {
                   .asMap()
                   .entries
                   .map<Widget>((entry) => GestureDetector(
-                onTap: () => _onImageTap(
-                    List<String>.from(project['images']), entry.key),
-                child: Image.asset(
-                  entry.value,
-                  height: 100,
-                  width: 100,
-                  fit: BoxFit.cover,
-                ),
-              ))
+                        onTap: () => _onImageTap(
+                            List<String>.from(project['images']), entry.key),
+                        child: Image.asset(
+                          entry.value,
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      ))
                   .toList(),
             ),
           ],
@@ -173,28 +173,38 @@ class FullScreenImageViewer extends StatelessWidget {
   final int initialIndex;
 
   const FullScreenImageViewer(
-      {Key? key, required this.images, required this.initialIndex})
-      : super(key: key);
+      {super.key, required this.images, required this.initialIndex});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: CarouselSlider.builder(
-        itemCount: images.length,
-        options: CarouselOptions(
-          initialPage: initialIndex,
-          enableInfiniteScroll: false,
-          viewportFraction: 1.0,
-          enlargeCenterPage: false,
-        ),
-        itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
-            Container(
-              child: PhotoView(
-                imageProvider: AssetImage(images[itemIndex]),
-                backgroundDecoration: BoxDecoration(color: Colors.black),
-              ),
+      body: Center(
+        child: CarouselSlider.builder(
+          itemCount: images.length,
+          options: CarouselOptions(
+            height: MediaQuery.of(context).size.height,
+            initialPage: initialIndex,
+            enableInfiniteScroll: false,
+            viewportFraction: 1.0,
+            enlargeCenterPage: false,
+          ),
+          itemBuilder:
+              (BuildContext context, int itemIndex, int pageViewIndex) =>
+                  Container(
+            child: PhotoView(
+              enablePanAlways: true,
+              enableRotation: true,
+              initialScale: PhotoViewComputedScale.contained,
+              minScale: PhotoViewComputedScale.contained,
+              maxScale: PhotoViewComputedScale.covered * 3.0,
+              basePosition: Alignment.center, // Center the zoom operation
+              imageProvider: AssetImage(images[itemIndex]),
+              backgroundDecoration:
+                  const BoxDecoration(color: Colors.transparent),
             ),
+          ),
+        ),
       ),
     );
   }
