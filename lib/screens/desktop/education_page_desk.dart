@@ -194,7 +194,7 @@ class TimelineLine extends StatelessWidget {
       child: Container(
         width: double.infinity,
         color: Colors.green,
-        margin: EdgeInsets.symmetric(horizontal: 11.0),
+        margin: EdgeInsets.symmetric(horizontal: 11.1),
       ),
     );
   }
