@@ -207,6 +207,58 @@
 }
 
 
+
+/* Set the profile image container to full height on large screens */
+.full-height {
+    height: 100vh; /* Full viewport height */
+}
+
+/* Make the profile image cover the full height */
+.profile-img {
+    width: 100%; /* Take 100% of the container width */
+    height: 100%; /* Take 100% of the container height */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+}
+
+/* For large screens (desktops, tablets in landscape mode) */
+@media (min-width: 992px) {
+    .profile-img {
+        height: 100vh; /* Full height for large screens */
+    }
+}
+
+/* For medium screens (tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .profile-img {
+        width: 80%; /* Use 80% of the container width on medium screens */
+        height: auto; /* Adjust the height to maintain the aspect ratio */
+    }
+}
+
+/* For small screens (smartphones) */
+@media (max-width: 767px) {
+    .profile-img {
+        width: 100%; /* Use 100% width of the container on small screens */
+        height: 50%; /* Let the height adjust automatically */
+    }
+}
+
+
+/* Reduce space between profile image and next section on mobile */
+@media (max-width: 767px) {
+    #home {
+        margin-bottom: 0; /* Remove bottom margin from #home section */
+    }
+
+    #about {
+        padding-top: 1px; /* Adjust padding-top for the #about section */
+        padding-bottom: 30px; /* Adjust padding-bottom for better spacing */
+    }
+}
+
+
+
+
 /*** About ***/
 #about .years .display-1 {
     font-size: 10rem;
